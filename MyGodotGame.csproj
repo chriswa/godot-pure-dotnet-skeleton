@@ -1,0 +1,37 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.4.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MyGodotGame</RootNamespace>
+
+    <!-- Enable nullable reference types -->
+    <Nullable>enable</Nullable>
+
+    <!-- Treat all warnings as errors -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!-- Show warnings for common code issues -->
+    <WarningsAsErrors>CS8618;CS8602;CS8603;CS1998</WarningsAsErrors>
+
+    <!-- Optional: turn off implicit usings if you want explicit imports -->
+    <ImplicitUsings>disable</ImplicitUsings>
+
+    <!-- Optional: stricter compiler behavior -->
+    <LangVersion>latest</LangVersion>
+
+    <!-- Opt in to latest Roslyn analysis -->
+    <AnalysisLevel>latest</AnalysisLevel>
+
+    <!-- Optional: Add analyzers to enhance strictness -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Static analyzers -->
+    <!-- <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" PrivateAssets="all" /> -->
+    <PackageReference Include="Meziantou.Analyzer" Version="1.0.722" PrivateAssets="all" />
+    <!-- <PackageReference Include="ErrorProne.NET.Analyzer" Version="0.0.2-alpha" PrivateAssets="all" /> -->
+  </ItemGroup>
+</Project>
