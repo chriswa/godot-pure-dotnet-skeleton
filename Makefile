@@ -14,14 +14,23 @@ lint-fix:
 build:
 	$(GODOT) --headless --build-solutions --quit
 
+build-assets:
+	$(GODOT) --headless --editor --quit
+
+build-src:
+	dotnet build
+
 run:
 	$(GODOT) --run
+
+run-loop:
+	while true; do $(GODOT) --run; done
 
 test:
 	$(GODOT) --headless --scene res://test_scene.tscn
 
-watch:
-	fswatch -o . | xargs -n1 -I{} $(GODOT) --headless --build-solutions
+watch-assets:
+	./watch-assets.sh
 
-watch-cs:
-	fswatch -o . --exclude '.*' --include '.*\.cs$$' | xargs -n1 -I{} $(GODOT) --headless --build-solutions
+watch-src:
+	dotnet watch build

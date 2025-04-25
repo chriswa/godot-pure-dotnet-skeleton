@@ -28,10 +28,30 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 
   </PropertyGroup>
+
   <ItemGroup>
     <!-- Static analyzers -->
     <!-- <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" PrivateAssets="all" /> -->
     <PackageReference Include="Meziantou.Analyzer" Version="1.0.722" PrivateAssets="all" />
     <!-- <PackageReference Include="ErrorProne.NET.Analyzer" Version="0.0.2-alpha" PrivateAssets="all" /> -->
   </ItemGroup>
+
+  <!-- write to .build.src.lock, .build.src.success, and .build.src.failed files -->
+  <Target Name="BuildStartMarker" BeforeTargets="BeforeBuild">
+    <WriteLinesToFile File=".build.src.lock" Lines="building..." Overwrite="true" />
+    <Delete Files=".build.src.failed" />
+  </Target>
+  <Target Name="BuildEndMarker" AfterTargets="Build">
+    <Delete Files=".build.src.lock" />
+    <WriteLinesToFile File=".build.src.success"
+                      Lines="$([System.DateTime]::Now.ToString('u'))"
+                      Overwrite="true" />
+  </Target>
+  <Target Name="BuildFailureMarker" AfterTargets="CoreCompile"
+          Condition="'$(MSBuildLastTaskResult)' == 'false'">
+    <Delete Files=".build.src.lock" />
+    <WriteLinesToFile File=".build.src.failed"
+                      Lines="$([System.DateTime]::Now.ToString('u'))"
+                      Overwrite="true" />
+  </Target>
 </Project>
