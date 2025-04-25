@@ -1,6 +1,6 @@
 .PHONY: build run test clean
 
-GODOT = /Applications/Godot_mono_v4.4.app/Contents/MacOS/Godot
+GODOT_EXECUTABLE_PATH = /Applications/Godot_mono_v4.4.app/Contents/MacOS/Godot
 
 clean:
 	rm -rf .godot/ obj/
@@ -12,22 +12,22 @@ lint-fix:
 	dotnet format
 
 build:
-	$(GODOT) --headless --build-solutions --quit
+	$(GODOT_EXECUTABLE_PATH) --headless --build-solutions --quit
 
 build-assets:
-	$(GODOT) --headless --editor --quit
+	$(GODOT_EXECUTABLE_PATH) --headless --editor --quit
 
 build-src:
 	dotnet build
 
 run:
-	$(GODOT) --run
+	$(GODOT_EXECUTABLE_PATH) --run
 
 run-loop:
-	while true; do $(GODOT) --run; done
+	while true; do $(GODOT_EXECUTABLE_PATH) --run; done
 
 test:
-	$(GODOT) --headless --scene res://test_scene.tscn
+	$(GODOT_EXECUTABLE_PATH) --headless --scene res://test_scene.tscn
 
 watch-assets:
 	./watch-assets.sh
