@@ -30,10 +30,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Static analyzers -->
-    <!-- <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" PrivateAssets="all" /> -->
+    <!-- Static analyzer -->
     <PackageReference Include="Meziantou.Analyzer" Version="1.0.722" PrivateAssets="all" />
-    <!-- <PackageReference Include="ErrorProne.NET.Analyzer" Version="0.0.2-alpha" PrivateAssets="all" /> -->
   </ItemGroup>
 
   <!-- write to .build.src.lock, .build.src.success, and .build.src.failed files -->
