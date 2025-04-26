@@ -11,7 +11,12 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
     <!-- Show warnings for common code issues -->
-    <WarningsAsErrors>CS8618;CS8602;CS8603;CS1998</WarningsAsErrors>
+    <WarningsAsErrors>CS8618;CS8602;CS8603;CS1998;CS0649</WarningsAsErrors>
+
+    <!-- Disable specific analyzer warnings -->
+    <NoWarn>
+      CA1805 <!-- explicit initialization is not a bad thing -->
+    </NoWarn>
 
     <!-- Optional: turn off implicit usings if you want explicit imports -->
     <ImplicitUsings>disable</ImplicitUsings>

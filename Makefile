@@ -1,4 +1,7 @@
-.PHONY: build run test clean
+MAKECMDGOALS ?= help
+
+.PHONY: $(MAKECMDGOALS)
+#.PHONY: build run test clean
 
 GODOT_EXECUTABLE_PATH = /Applications/Godot_mono_v4.4.app/Contents/MacOS/Godot
 
@@ -23,8 +26,8 @@ build-src:
 run:
 	$(GODOT_EXECUTABLE_PATH) --run
 
-run-loop:
-	while true; do $(GODOT_EXECUTABLE_PATH) --run; done
+run-restart-on-build:
+	./dev.sh
 
 test:
 	$(GODOT_EXECUTABLE_PATH) --headless --scene res://test_scene.tscn

@@ -1,0 +1,37 @@
+# C# Style and Linting Rules
+
+## Object Initialization
+- Use object initializers with trailing commas for all properties
+- Example:
+```csharp
+var obj = new MyClass
+{
+    Property1 = value1,
+    Property2 = value2,  // Note trailing comma
+};
+```
+
+## Properties vs Fields
+- Use properties for Node-derived members to ensure proper cleanup
+- Use fields for simple value types and non-Node members
+- Example:
+```csharp
+// Node-derived members should be properties
+private ColorRect MandelbrotRect { get; set; } = null!;
+
+// Simple value types can be fields
+private Vector2 _center = new(-0.5f, 0);
+private float _zoom = 1.0f;
+```
+
+## Pattern Matching
+- Use property patterns for cleaner event handling
+- Example:
+```csharp
+if (@event is InputEventKey { Pressed: true, Keycode: Key.Escape })
+```
+
+## Resource Management
+- Don't implement IDisposable unnecessarily
+- Let Godot handle resource cleanup for Node-derived classes
+- Only implement Dispose if you have additional managed resources to clean up

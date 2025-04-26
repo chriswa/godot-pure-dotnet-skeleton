@@ -2,3 +2,4 @@
 /android/
 .obj/
 .build.*
+.fswatch.tmp
